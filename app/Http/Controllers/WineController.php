@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-class HomeController extends Controller
+use App\Wine;
+
+class WineController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -11,6 +13,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $wines = Wine::all();
+
+        return view('wines', compact('wines'));
     }
 }
