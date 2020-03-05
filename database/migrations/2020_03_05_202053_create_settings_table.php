@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWinesTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateWinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wines', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('image');
-            $table->string('origin');
-            $table->integer('year');
-            $table->integer('type');
+        Schema::create('settings', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('key')->unique();;
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateWinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wines');
+        Schema::dropIfExists('settings');
     }
 }
