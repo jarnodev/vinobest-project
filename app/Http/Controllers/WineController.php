@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Wine;
+use App\Models\Wine;
 
 class WineController extends Controller
 {
