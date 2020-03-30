@@ -54,6 +54,20 @@
                                 <a class="nav-link" href="{{ route('wines') }}">{{ __('Wijnen') }}</a>
                             </li>
 
+                            <li class="nav-item @yield('about-us')">
+                                <a class="nav-link" href="{{ route('about-us') }}">{{ __('Over ons') }}</a>
+                            </li>
+
+                            <li class="nav-item @yield('contact')">
+                                <a class="nav-link" href="{{ route('contact') }}">{{ __('Contact') }}</a>
+                            </li>
+
+                            @if(Auth::user()->permission_level > 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('Administratie') }}</a>
+                            </li>
+                            @endif
+
                             <li class="nav-item dropdown @yield('home')">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>

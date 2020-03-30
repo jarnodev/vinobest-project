@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class ContactController extends Controller
+class AboutUsController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -11,6 +11,6 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('contact');
+        return view('about-us');
     }
 }
