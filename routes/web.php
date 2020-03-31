@@ -19,6 +19,7 @@ Route::namespace('Admin')->name('admin.')->group(function () {
         Route::get('/', 'DashboardController@index');
 
         Route::resource('users', 'UserController');
+        Route::resource('wines', 'WineController');
     });
 });
 

@@ -38,6 +38,14 @@
                     <ul class="navbar-nav ml-auto">
                         @guest
                         @else
+                            <li class="nav-item @yield('wines')">
+                                <a class="nav-link" href="{{ route('admin.wines.index') }}">{{ __('Wijnen') }}</a>
+                            </li>
+
+                            <li class="nav-item @yield('users')">
+                                <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('Gebruikers') }}</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Terug naar de site') }}</a>
                             </li>
