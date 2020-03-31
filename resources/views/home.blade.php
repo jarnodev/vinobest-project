@@ -3,17 +3,20 @@
 @section('home', 'active')
 
 @section('content')
+
+<img src="{{ asset('images/winebg3.jpg') }}" class="w-100">
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="pb-2 mb-3 border-bottom">
-                <h2>{{ __('Voorpagina') }}</h2>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat distinctio vero velit porro deserunt fuga omnis temporibus mollitia eligendi rem. Nesciunt, sunt saepe pariatur aspernatur distinctio porro impedit libero dolore.
-                </div>
-            </div>
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h1>Welkom bij Vinobest</h1>
+            <h4>Gespecialiseerd in wijnen en wijnproeverijen</h4>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+            <a href="wines" class="btn btn-dark">Bekijk onze wijnen</a>
+        </div>
+
+        <div class="col-md-6">
+            <img src="{{ asset('images/winelove.jpg') }}" class="w-50 d-block mx-auto">
         </div>
     </div>
 </div>
