@@ -41,14 +41,30 @@
 
                     <ul class="navbar-nav ml-auto">
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
+                            <li class="nav-item @yield('wines')">
+                                <a class="nav-link" href="{{ route('wines') }}">{{ __('Wijnen') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Aanmelden') }}</a>
-                                </li>
-                            @endif
+
+                            <li class="nav-item @yield('about-us')">
+                                <a class="nav-link" href="{{ route('about-us') }}">{{ __('Over ons') }}</a>
+                            </li>
+
+                            <li class="nav-item @yield('contact')">
+                                <a class="nav-link" href="{{ route('contact') }}">{{ __('Contact') }}</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Account <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
+                                    @if (Route::has('register'))
+                                        <a class="dropdown-item" href="{{ route('register') }}">{{ __('Aanmelden') }}</a>
+                                    @endif
+                                </div>
+                            </li>
                         @else
                             <li class="nav-item @yield('wines')">
                                 <a class="nav-link" href="{{ route('wines') }}">{{ __('Wijnen') }}</a>
