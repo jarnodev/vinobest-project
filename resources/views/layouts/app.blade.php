@@ -66,9 +66,9 @@
                                 </div>
                             </li>
                         @else
-                            <li class="nav-item @yield('home')">
+                            <!--<li class="nav-item @yield('home')">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Homepagina') }}</a>
-                            </li>
+                            </li>-->
 
                             <li class="nav-item @yield('wines')">
                                 <a class="nav-link" href="{{ route('wines') }}">{{ __('Wijnen') }}</a>
