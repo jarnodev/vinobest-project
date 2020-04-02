@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4">
         <div class="col-md-8">
             <div class="pb-2 mb-2 border-bottom">
                 <h3>{{ __('Wachtwoord bevestigen') }}</h3>
