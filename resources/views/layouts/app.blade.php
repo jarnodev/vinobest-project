@@ -17,7 +17,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 
     <!-- Styles -->
@@ -105,13 +105,15 @@
             </div>
         </nav>
 
-        <main class="">
+        <main>
             @yield('content')
         </main>
 
-        <div class="footer text-center my-5 pt-5">
-            &copy; Vinobest <?php echo date("Y"); ?>
-        </div>
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">&copy; Vinobest {{ date("Y") }}</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
