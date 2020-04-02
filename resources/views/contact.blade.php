@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-md-6">
             <div class="pb-2 mb-3 border-bottom">
                 <h2>{{ __('Contactgegevens') }}</h2>

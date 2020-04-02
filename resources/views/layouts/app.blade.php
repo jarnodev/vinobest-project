@@ -17,9 +17,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}?v={{ rand(1,9999) }}" rel="stylesheet">
@@ -44,6 +43,18 @@
 
                     <ul class="navbar-nav ml-auto">
                         @guest
+                            <li class="nav-item @yield('wines')">
+                                <a class="nav-link" href="{{ route('wines') }}"><i class="fas fa-wine-glass-alt"></i> {{ __('Wijnen') }}</a>
+                            </li>
+
+                            <li class="nav-item @yield('about-us')">
+                                <a class="nav-link" href="{{ route('about-us') }}"><i class="fas fa-user-friends"></i> {{ __('Over ons') }}</a>
+                            </li>
+
+                            <li class="nav-item @yield('contact')">
+                                <a class="nav-link" href="{{ route('contact') }}"><i class="fas fa-id-card"></i> {{ __('Contact') }}</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
                             </li>
@@ -53,10 +64,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item @yield('home')">
-                                <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i> {{ __('Home') }}</a>
-                            </li>
-
                             <li class="nav-item @yield('wines')">
                                 <a class="nav-link" href="{{ route('wines') }}"><i class="fas fa-wine-glass-alt"></i> {{ __('Wijnen') }}</a>
                             </li>
