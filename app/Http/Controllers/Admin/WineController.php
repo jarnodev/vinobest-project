@@ -47,9 +47,10 @@ class WineController extends Controller
             'type' => 'required'
         ]);
 
-        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        $image = $request->file('image');
+        $imageName = rand() . '.' . $image->getClientOriginalExtension();
 
-        request()->image->move(public_path('images'), $imageName);
+        $image->move(public_path('images\wines'), $imageName);
 
         Wine::create($request->all());
 

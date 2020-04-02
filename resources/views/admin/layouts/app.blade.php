@@ -7,13 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/vbnotext.png') }}" type="image/png">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -58,6 +58,12 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">&copy; Vinobest {{ date("Y") }}</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

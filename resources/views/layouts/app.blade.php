@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,12 +17,11 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}?v={{ rand(1,9999) }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}?v={{ rand(1,9999) }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -78,13 +77,13 @@
 
                             @if(Auth::user()->permission_level > 1)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('Administratie') }}</a>
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-cogs"></i> {{ __('Administratie') }}</a>
                             </li>
                             @endif
 
                             <li class="nav-item dropdown @yield('home')">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }} <span class="caret"></span>
+                                    <i class="fas fa-user"></i> {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
