@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="{{ $item->image }}" class="card-img-top" alt="{{ $item->name }}">
+                        <img src="/images/wines/{{ $item->image }}" class="card-img-top" alt="{{ $item->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->name }}</h5>
                             <p class="card-text">{{ $item->description }}</p>

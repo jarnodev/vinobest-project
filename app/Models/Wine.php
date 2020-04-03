@@ -12,6 +12,6 @@ class Wine extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'origin', 'year', 'type'
+        'name', 'description', 'image', 'origin', 'year', 'type'
     ];
 }

@@ -10,7 +10,7 @@
                 <h2>{{ __('Wijn toevoegen') }}</h2>
             </div>
             <div class="card">
-                <form action="{{ route('admin.wines.store') }}" method="post">
+                <form action="{{ route('admin.wines.store') }}" method="post" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
 

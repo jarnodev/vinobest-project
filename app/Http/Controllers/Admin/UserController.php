@@ -45,15 +45,12 @@ class UserController extends Controller
         $this->validate($request, [
             'username' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'confirmed',
+            'permission_level' => 'required'
         ]);
 
-        $input = $request->all();
+        User::find($id)->update($request->all());
 
-        $user = User::find($id);
-        $user->update($input);
-
-        return redirect()->back()
+        return redirect()->route('admin.users.index')
                         ->with('success', 'Gebruiker succesvol geüpdate');
     }
 
@@ -66,7 +63,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('admin.users.overview')
+        return redirect()->route('admin.users.index')
                         ->with('success', 'Gebruiker succesvol verwijderd');
     }
 }

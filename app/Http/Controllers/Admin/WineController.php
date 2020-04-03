@@ -47,14 +47,17 @@ class WineController extends Controller
             'type' => 'required'
         ]);
 
-        $image = $request->file('image');
-        $imageName = rand() . '.' . $image->getClientOriginalExtension();
+        $wine = Wine::create($request->all());
 
-        $image->move(public_path('images\wines'), $imageName);
+        if($image = $request->file('image')) {
+            $imageName = $image->getClientOriginalName();
+            if ($image->move(public_path('/images/wines/'), $imageName)) {
+                $wine->image = $imageName;
+                $wine->save();
+            }
+        }
 
-        Wine::create($request->all());
-
-        return redirect()->route('admin.wines.overview')
+        return redirect()->route('admin.wines.index')
             ->with('success', 'Wijn succesvol toegevoegd!');
     }
 
@@ -103,8 +106,13 @@ class WineController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('admin.wines.overview')
-                        ->with('success', 'Wijn succesvol verwijderd');
+        try {
+            Wine::find($id)->delete();
+            return redirect()->route('admin.wines.index')
+                            ->with('success', 'Wijn succesvol verwijderd');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.wines.index')
+                            ->with('success', 'Er is iets fout gegaan met het verwijderen van de wijn.');
+        }
     }
 }

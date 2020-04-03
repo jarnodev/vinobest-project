@@ -9,6 +9,18 @@
             <div class="pb-2 mb-3 border-bottom">
                 <h2>{{ __('Gebruikers overzicht') }}</h2>
             </div>
+            @if (session('status'))
+            <div class="alert alert-dismissible alert-success">{{ session('status') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+            @endif
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has($msg))
+                    <p class="alert alert-dismissible alert-{{ $msg }}">
+                        {{ Session::get($msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </p>
+                @endif
+            @endforeach
             <div class="card">
                 <div class="card-body">
                     <table class="table table-striped">
