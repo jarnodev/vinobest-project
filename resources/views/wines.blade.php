@@ -9,8 +9,8 @@
             <div class="pb-2 mb-3 border-bottom">
                 <h2>{{ __('Wijn assortiment') }}</h2>
             </div>
-            @foreach ($wines as $index => $item)
             <div class="row">
+                @foreach ($wines as $index => $item)
                 <div class="col-md-4">
                     <div class="card">
                         <img src="/images/wines/{{ $item->image }}" class="card-img-top" alt="{{ $item->name }}">
@@ -21,8 +21,8 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
 </div>

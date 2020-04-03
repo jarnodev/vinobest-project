@@ -15,6 +15,7 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
         Route::resource('users', 'UserController');
         Route::resource('wines', 'WineController');
+        Route::resource('winetypes', 'WineTypeController');
     });
 });
 
@@ -23,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about-us', 'AboutUsController@index')->name('about-us');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::get('/wines', 'WineController@index')->name('wines');
+Route::get('/wines/{id}', 'WineController@show')->name('wine');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'HomeController@index');

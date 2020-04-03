@@ -62,8 +62,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('admin.users.index')
-                        ->with('success', 'Gebruiker succesvol verwijderd');
+        try {
+            User::find($id)->delete();
+            return redirect()->route('admin.users.index')
+                            ->with('success', 'Gebruiker succesvol verwijderd');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.users.index')
+                            ->with('danger', 'Er is iets fout gegaan met het verwijderen van de gebruiker.');
+        }
     }
 }

@@ -112,7 +112,7 @@ class WineController extends Controller
                             ->with('success', 'Wijn succesvol verwijderd');
         } catch (\Throwable $th) {
             return redirect()->route('admin.wines.index')
-                            ->with('success', 'Er is iets fout gegaan met het verwijderen van de wijn.');
+                            ->with('danger', 'Er is iets fout gegaan met het verwijderen van de wijn.');
         }
     }
 }
