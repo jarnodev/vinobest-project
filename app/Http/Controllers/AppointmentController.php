@@ -33,7 +33,11 @@ class AppointmentController extends Controller
         $appointment = new UserAppointment();
         $appointment->tour_date_id = $request->get('tour_date_id');
         $appointment->user_id = Auth::user()->id;
-        $appointment->allergies = $request->get('allergies');
+        if (!is_null($request->get('allergies'))) {
+            $appointment->allergies = $request->get('allergies');
+        } else {
+            $appointment->allergies = 'Geen allergieën';
+        }
 
         // TODO:
         // Check if you already have joined this appointment
