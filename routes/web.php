@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/appointments', 'AppointmentController@index')->name('appointments');
+    Route::post('/appointments', 'AppointmentController@join')->name('appointments.join');
 });
 
 Route::namespace('Admin')->name('admin.')->group(function () {
