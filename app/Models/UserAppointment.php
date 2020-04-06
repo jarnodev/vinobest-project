@@ -14,4 +14,20 @@ class UserAppointment extends Model
     protected $fillable = [
         'user_id', 'tour_date_id', 'allergies'
     ];
+
+    /**
+     * Has one relation to a tourdate
+     */
+    public function tourDate()
+    {
+        return $this->hasOne(TourDate::class, 'id', 'tour_date_id');
+    }
+
+    /**
+     * Has one relation to a user
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

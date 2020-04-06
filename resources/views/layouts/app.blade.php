@@ -31,25 +31,28 @@
                     <img src="{{ asset('images/vbnotext.png') }}" height="70px">
                 </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="siteNavigation">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item @yield('wines')">
+                            <a class="nav-link" href="{{ route('wines') }}"><i class="fas fa-wine-glass-alt"></i> {{ __('Wijnen') }}</a>
+                        </li>
+
+                        <li class="nav-item @yield('appointments')">
+                            <a class="nav-link" href="{{ route('appointments') }}"><i class="fas fa-book"></i> {{ __('Inschrijven') }}</a>
+                        </li>
+
+                        <li class="nav-item @yield('about-us')">
+                            <a class="nav-link" href="{{ route('about-us') }}"><i class="fas fa-user-friends"></i> {{ __('Over ons') }}</a>
+                        </li>
+
+                        <li class="nav-item @yield('contact')">
+                            <a class="nav-link" href="{{ route('contact') }}"><i class="fas fa-id-card"></i> {{ __('Contact') }}</a>
+                        </li>
                         @guest
-                            <li class="nav-item @yield('wines')">
-                                <a class="nav-link" href="{{ route('wines') }}"><i class="fas fa-wine-glass-alt"></i> {{ __('Wijnen') }}</a>
-                            </li>
-
-                            <li class="nav-item @yield('about-us')">
-                                <a class="nav-link" href="{{ route('about-us') }}"><i class="fas fa-user-friends"></i> {{ __('Over ons') }}</a>
-                            </li>
-
-                            <li class="nav-item @yield('contact')">
-                                <a class="nav-link" href="{{ route('contact') }}"><i class="fas fa-id-card"></i> {{ __('Contact') }}</a>
-                            </li>
-
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
                             </li>
@@ -59,18 +62,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item @yield('wines')">
-                                <a class="nav-link" href="{{ route('wines') }}"><i class="fas fa-wine-glass-alt"></i> {{ __('Wijnen') }}</a>
-                            </li>
-
-                            <li class="nav-item @yield('about-us')">
-                                <a class="nav-link" href="{{ route('about-us') }}"><i class="fas fa-user-friends"></i> {{ __('Over ons') }}</a>
-                            </li>
-
-                            <li class="nav-item @yield('contact')">
-                                <a class="nav-link" href="{{ route('contact') }}"><i class="fas fa-id-card"></i> {{ __('Contact') }}</a>
-                            </li>
-
                             @if(Auth::user()->permission_level > 1)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-cogs"></i> {{ __('Administratie') }}</a>

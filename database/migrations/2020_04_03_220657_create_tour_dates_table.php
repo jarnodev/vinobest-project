@@ -15,6 +15,9 @@ class CreateTourDatesTable extends Migration
     {
         Schema::create('tour_dates', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->integer('seats');
+            $table->integer('price');
             $table->timestamps();
         });
     }

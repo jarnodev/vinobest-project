@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/', 'HomeController@index');
-    Route::get('/appointments', 'AppointmentController@index')->name('appointment');
+    Route::get('/appointments', 'AppointmentController@index')->name('appointments');
 });
 
 Route::namespace('Admin')->name('admin.')->group(function () {
@@ -16,6 +16,8 @@ Route::namespace('Admin')->name('admin.')->group(function () {
         Route::resource('users', 'UserController');
         Route::resource('wines', 'WineController');
         Route::resource('winetypes', 'WineTypeController');
+        Route::resource('appointments', 'UserAppointmentController');
+        Route::resource('tourdates', 'TourDateController');
     });
 });
 

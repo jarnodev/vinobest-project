@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TourDate;
 use Illuminate\Http\Request;
 
 class TourDateController extends Controller
@@ -14,7 +15,9 @@ class TourDateController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tourdates.overview', [
+            'tourDates' => TourDate::all()
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class TourDateController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tourdates.create');
     }
 
     /**
@@ -35,18 +38,16 @@ class TourDateController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'date' => 'required|date',
+            'seats' => 'required',
+            'price' => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        TourDate::create($request->all());
+
+        return redirect()->route('admin.tourdates.index')
+            ->with('success', 'Wijnproeverij succesvol gepland.');
     }
 
     /**
@@ -57,7 +58,9 @@ class TourDateController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.tourdates.edit', [
+            'tourDate' => TourDate::find($id)
+        ]);
     }
 
     /**
@@ -69,7 +72,16 @@ class TourDateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'date' => 'required|date',
+            'seats' => 'required',
+            'price' => 'required'
+        ]);
+
+        TourDate::find($id)->update($request->all());
+
+        return redirect()->route('admin.tourdates.index')
+            ->with('success', 'Wijnproeverij succesvol geüpdate.');
     }
 
     /**
@@ -80,6 +92,13 @@ class TourDateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            TourDate::find($id)->delete();
+            return redirect()->route('admin.tourdates.index')
+                            ->with('success', 'Wijnproeverij succesvol verwijderd');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.tourdates.index')
+                            ->with('danger', 'Er is iets fout gegaan met het verwijderen van de wijnproeverij.');
+        }
     }
 }

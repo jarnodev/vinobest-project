@@ -42,6 +42,14 @@
                                 <a class="nav-link" href="{{ route('admin.wines.index') }}">{{ __('Wijnen') }}</a>
                             </li>
 
+                            <li class="nav-item @yield('appointments')">
+                                <a class="nav-link" href="{{ route('admin.appointments.index') }}">{{ __('Inschrijvingen') }}</a>
+                            </li>
+
+                            <li class="nav-item @yield('tourdates')">
+                                <a class="nav-link" href="{{ route('admin.tourdates.index') }}">{{ __('Proeverijen') }}</a>
+                            </li>
+
                             <li class="nav-item @yield('wineTypes')">
                                 <a class="nav-link" href="{{ route('admin.winetypes.index') }}">{{ __('Wijnsoorten') }}</a>
                             </li>

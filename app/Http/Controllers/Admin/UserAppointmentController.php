@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TourDate;
+use App\Models\User;
+use App\Models\UserAppointment;
 use Illuminate\Http\Request;
 
 class UserAppointmentController extends Controller
@@ -14,7 +17,9 @@ class UserAppointmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.appointments.overview', [
+            'appointments' => UserAppointment::all()->load('user', 'tourDate')
+        ]);
     }
 
     /**
@@ -24,7 +29,10 @@ class UserAppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.appointments.create', [
+            'tourDates' => TourDate::all(),
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -35,18 +43,16 @@ class UserAppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'tour_date_id' => 'required',
+            'allergies' => 'required',
+            'user_id' => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        UserAppointment::create($request->all());
+
+        return redirect()->route('admin.appointments.index')
+            ->with('success', 'Succesvol ingeschreven.');
     }
 
     /**
@@ -57,7 +63,11 @@ class UserAppointmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.appointments.edit', [
+            'appointment' => UserAppointment::find($id),
+            'tourDates' => TourDate::all(),
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -69,7 +79,16 @@ class UserAppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'tour_date_id' => 'required',
+            'allergies' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        UserAppointment::find($id)->update($request->all());
+
+        return redirect()->route('admin.appointments.index')
+            ->with('success', 'Inschrijving succesvol geüpdate.');
     }
 
     /**
@@ -80,6 +99,13 @@ class UserAppointmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            UserAppointment::find($id)->delete();
+            return redirect()->route('admin.appointments.index')
+                            ->with('success', 'Inschrijving succesvol verwijderd');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.appointments.index')
+                            ->with('danger', 'Er is iets fout gegaan met het verwijderen van de inschrijving.');
+        }
     }
 }
