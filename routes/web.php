@@ -6,6 +6,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/appointments', 'AppointmentController@index')->name('appointments');
     Route::post('/appointments', 'AppointmentController@join')->name('appointments.join');
+    Route::delete('/appointments/{id}', 'AppointmentController@destroy')->name('appointments.destroy');
 });
 
 Route::namespace('Admin')->name('admin.')->group(function () {

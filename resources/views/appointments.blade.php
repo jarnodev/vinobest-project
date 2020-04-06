@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                             <label for="inputAllergies">{{ __('Allergieën') }}</label>
-                            <textarea name="allergies" id="inputAllergies" class="form-control @error('allergies') is-invalid @enderror" cols="30" rows="10">{{ old('allergies') }}</textarea>
+                            <textarea name="allergies" id="inputAllergies" class="form-control @error('allergies') is-invalid @enderror" cols="30" rows="5">{{ old('allergies') }}</textarea>
                             @error('allergies')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center pt-3 pb-3">
         <div class="col-md-10">
             <div class="pb-2 mb-3 border-bottom">
                 <h2>{{ __('Mijn inschrijvingen') }}</h2>
@@ -79,12 +79,10 @@
                             <tr>
                                 <td>{{ $appointment->tourDate->date }}</td>
                                 <td>{{ $appointment->allergies }}</td>
-                                <td style="width:25%;">
-                                    <form action="{{ route('admin.appointments.destroy', $appointment->id) }}" method="POST">
+                                <td style="width:15%;">
+                                    <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a class="btn btn-primary" href="{{ route('admin.appointments.edit', $appointment->id) }}">{{ __('Edit') }}</a>
-
                                         <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
                                     </form>
                                 </td>

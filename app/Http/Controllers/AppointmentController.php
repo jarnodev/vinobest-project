@@ -44,4 +44,22 @@ class AppointmentController extends Controller
         return redirect()->back()
             ->with('success', 'Je hebt je ingeschreven voor de wijn proeverij.');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            UserAppointment::find($id)->delete();
+            return redirect()->route('appointments')
+                            ->with('success', 'Succesvol uitgeschreven');
+        } catch (\Throwable $th) {
+            return redirect()->route('appointments')
+                            ->with('danger', 'Er is iets fout gegaan tijdens het uitschrijven.');
+        }
+    }
 }
