@@ -33,15 +33,25 @@ class AppointmentController extends Controller
         $appointment = new UserAppointment();
         $appointment->tour_date_id = $request->get('tour_date_id');
         $appointment->user_id = Auth::user()->id;
+
         if (!is_null($request->get('allergies'))) {
             $appointment->allergies = $request->get('allergies');
         } else {
             $appointment->allergies = 'Geen allergieën';
         }
 
-        // TODO:
-        // Check if you already have joined this appointment
-        // Check if amount of places are full or not
+        $appointmentByTourDateId = UserAppointment::where('tour_date_id', $appointment->tour_date_id);
+        $tourDate = TourDate::find($appointment->tour_date_id);
+
+        if (UserAppointment::where('tour_date_id', $appointment->tour_date_id)->where('user_id', Auth::user()->id)->exists()) {
+            return redirect()->back()
+                ->with('danger', 'Je kan je maar één keer inschrijven voor deze proeverij.');
+        }
+
+        if ($tourDate->seats == $appointmentByTourDateId->count()) {
+            return redirect()->back()
+                ->with('danger', 'Deze proeverij zit momenteel vol.');
+        }
 
         $appointment->save();
 

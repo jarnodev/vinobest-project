@@ -65,7 +65,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>{{ __('Datum') }}</th>
