@@ -30,7 +30,7 @@
                             <label for="inputDate">{{ __('Datum') }}</label>
                             <select name="tour_date_id" class="form-control @error('tour_date_id') }} is-invalid @enderror" id="inputDate">
                                 @foreach ($tourDates as $tourDate)
-                                <option value="{{ $tourDate->id }}">{{ $tourDate->date }}</option>
+                                <option value="{{ $tourDate->id }}">{{ $tourDate->date }} - &euro;{{ $tourDate->price }}</option>
                                 @endforeach
                             </select>
                             @error('tour_date_id')

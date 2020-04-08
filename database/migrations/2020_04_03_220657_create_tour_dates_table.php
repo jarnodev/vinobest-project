@@ -17,7 +17,7 @@ class CreateTourDatesTable extends Migration
             $table->id();
             $table->date('date');
             $table->integer('seats');
-            $table->integer('price');
+            $table->double('price', 10, 2);
             $table->timestamps();
         });
     }
