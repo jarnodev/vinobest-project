@@ -34,9 +34,12 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="inputPrice">{{ __('Aantal plaatsen') }}</label>
-                            <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" id="inputPrice" value="{{ old('price') }}" placeholder="{{ __('Prijs...') }}">
+                        <label for="inputPrice">{{ __('Prijs') }}</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">&euro;</span>
+                            </div>
+                            <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="inputPrice" value="{{ old('price') }}" placeholder="{{ __('Prijs...') }}">
                             @error('price')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

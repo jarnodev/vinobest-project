@@ -15,6 +15,8 @@
                         @csrf
                         @method('PUT')
 
+                        <input type="hidden" name="image" value="{{ $wine->image }}">
+
                         <div class="form-group">
                             <label for="inputName">{{ __('Naam') }}</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputName" value="{{ $wine->name }}" placeholder="{{ __('Naam...') }}">
@@ -29,16 +31,6 @@
                             <label for="inputDescription">{{ __('Beschrijving') }}</label>
                             <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" id="inputDescription" value="{{ $wine->description }}" placeholder="{{ __('Beschrijving...') }}">
                             @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputImage">{{ __('Afbeelding') }}</label>
-                            <input type="file" name="image" class="form-control-file @error('image') is-invalid @enderror" id="inputImage" value="{{ $wine->image }}" placeholder="{{ __('Afbeelding...') }}">
-                            @error('image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

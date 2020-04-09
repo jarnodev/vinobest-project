@@ -14,4 +14,9 @@ class TourDate extends Model
     protected $fillable = [
         'date', 'seats', 'price'
     ];
+
+    public function seatsTaken()
+    {
+        return $this->hasMany(UserAppointment::class, 'tour_date_id', 'id');
+    }
 }

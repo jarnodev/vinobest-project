@@ -16,7 +16,7 @@ class TourDateController extends Controller
     public function index()
     {
         return view('admin.tourdates.overview', [
-            'tourDates' => TourDate::all()
+            'tourDates' => TourDate::all()->load('seatsTaken')
         ]);
     }
 

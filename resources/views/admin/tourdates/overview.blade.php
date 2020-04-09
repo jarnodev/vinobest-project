@@ -29,6 +29,7 @@
                                 <th>{{ __('#') }}</th>
                                 <th>{{ __('Datum') }}</th>
                                 <th>{{ __('Aantal plaatsen') }}</th>
+                                <th>{{ __('Plaatsen bezet') }}</th>
                                 <th>{{ __('Prijs') }}</th>
                                 <th>{{ __('Acties') }}</th>
                             </tr>
@@ -40,6 +41,7 @@
                                 <td>{{ $tourDate->id }}</td>
                                 <td>{{ $tourDate->date }}</td>
                                 <td>{{ $tourDate->seats }}</td>
+                                <td>{{ $tourDate->seatsTaken->count() }}</td>
                                 <td>{{ $tourDate->price }}</td>
                                 <td style="width:15%;">
                                     <form action="{{ route('admin.tourdates.destroy', $tourDate->id) }}" method="POST">

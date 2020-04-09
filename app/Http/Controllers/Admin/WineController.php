@@ -88,15 +88,15 @@ class WineController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'username' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'confirmed',
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'origin' => 'required',
+            'year' => 'required',
+            'type' => 'required'
         ]);
 
-        $input = $request->all();
-
-        $user = User::find($id);
-        $user->update($input);
+        Wine::find($id)->update($request->all());
 
         return redirect()->back()
                         ->with('success', 'Wijn succesvol geüpdate');
