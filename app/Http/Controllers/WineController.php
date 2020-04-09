@@ -14,7 +14,7 @@ class WineController extends Controller
     public function index()
     {
         return view('wines', [
-            'wines' => Wine::all()
+            'wines' => Wine::all()->load('wineType')
         ]);
     }
 

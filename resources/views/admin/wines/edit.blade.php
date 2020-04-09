@@ -67,7 +67,11 @@
 
                         <div class="form-group">
                             <label for="inputType">{{ __('Wijnsoort') }}</label>
-                            <input type="number" name="type" class="form-control @error('type') is-invalid @enderror" id="inputType" value="{{ $wine->type }}" placeholder="{{ __('Wijnsoort') }}">
+                            <select name="type" class="form-control @error('type') }} is-invalid @enderror" id="inputType">
+                                @foreach ($wineTypes as $wineType)
+                                <option value="{{ $wineType->id }}" @if ($wine->type == $wineType->id) selected @endif>{{ $wineType->name }}</option>
+                                @endforeach
+                            </select>
                             @error('type')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

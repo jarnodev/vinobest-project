@@ -12,7 +12,7 @@ class UserAppointment extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'tour_date_id', 'allergies'
+        'user_id', 'tour_date_id', 'allergies', 'payment_done'
     ];
 
     /**

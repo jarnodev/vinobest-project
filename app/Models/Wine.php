@@ -14,4 +14,9 @@ class Wine extends Model
     protected $fillable = [
         'name', 'description', 'image', 'origin', 'year', 'type'
     ];
+
+    public function wineType()
+    {
+        return $this->hasOne(WineType::class, 'id', 'type');
+    }
 }

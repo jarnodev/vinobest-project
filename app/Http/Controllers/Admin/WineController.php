@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Wine;
+use App\Models\WineType;
 use Illuminate\Http\Request;
 
 class WineController extends Controller
@@ -16,7 +17,7 @@ class WineController extends Controller
     public function index()
     {
         return view('admin.wines.overview', [
-            'data' => Wine::orderBy('id', 'ASC')->get()
+            'data' => Wine::orderBy('id', 'ASC')->get()->load('wineType')
         ]);
     }
 
@@ -27,7 +28,9 @@ class WineController extends Controller
      */
     public function create()
     {
-        return view('admin.wines.create');
+        return view('admin.wines.create', [
+            'wineTypes' => WineType::all()
+        ]);
     }
 
     /**
@@ -70,7 +73,8 @@ class WineController extends Controller
     public function edit($id)
     {
         return view('admin.wines.edit', [
-            'wine' => Wine::find($id)
+            'wine' => Wine::find($id),
+            'wineTypes' => WineType::all()
         ]);
     }
 

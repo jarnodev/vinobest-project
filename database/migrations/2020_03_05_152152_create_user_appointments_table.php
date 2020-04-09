@@ -18,6 +18,7 @@ class CreateUserAppointmentsTable extends Migration
             $table->integer('user_id');
             $table->integer('tour_date_id');
             $table->string('allergies');
+            $table->integer('payment_done');
             $table->timestamps();
         });
     }

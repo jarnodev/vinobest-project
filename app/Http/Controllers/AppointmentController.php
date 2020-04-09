@@ -33,6 +33,7 @@ class AppointmentController extends Controller
         $appointment = new UserAppointment();
         $appointment->tour_date_id = $request->get('tour_date_id');
         $appointment->user_id = Auth::user()->id;
+        $appointment->payment_done = 0;
 
         if (!is_null($request->get('allergies'))) {
             $appointment->allergies = $request->get('allergies');

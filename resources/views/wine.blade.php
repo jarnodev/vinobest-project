@@ -28,7 +28,7 @@
                     </div>
                     <div class="card mt-3">
                         <div class="card-body">
-                            <p class="card-text">Wijnsoort: <strong>{{ $wine->type }}</strong></p>
+                            <p class="card-text">Wijnsoort: <strong>{{ $wine->wineType->name }}</strong></p>
                         </div>
                     </div>
                 </div>

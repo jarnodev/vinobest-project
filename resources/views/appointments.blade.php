@@ -83,7 +83,7 @@
                                     <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
+                                        <button type="submit" class="btn btn-danger">{{ __('Uitschrijven') }}</button>
                                     </form>
                                 </td>
                             </tr>
