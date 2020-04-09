@@ -20,6 +20,7 @@ Route::namespace('Admin')->name('admin.')->group(function () {
         Route::resource('winetypes', 'WineTypeController');
         Route::resource('appointments', 'UserAppointmentController');
         Route::resource('tourdates', 'TourDateController');
+        Route::resource('winereviews', 'WineReviewController');
     });
 });
 

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="pb-2 mb-3 border-bottom">
-                <h2>{{ __('Inschrijvingen overzicht') }}</h2>
+                <h2>{{ __('Proeverijen overzicht') }}</h2>
             </div>
             @if (session('status'))
             <div class="alert alert-dismissible alert-success">{{ session('status') }}
