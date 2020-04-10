@@ -77,8 +77,6 @@ class WineReviewController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'wine_id' => 'required',
-            'user_id' => 'required',
             'message' => 'required',
             'rating' => 'required'
         ]);

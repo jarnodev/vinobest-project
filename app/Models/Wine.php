@@ -19,4 +19,9 @@ class Wine extends Model
     {
         return $this->hasOne(WineType::class, 'id', 'type');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(WineReview::class, 'wine_id', 'id');
+    }
 }

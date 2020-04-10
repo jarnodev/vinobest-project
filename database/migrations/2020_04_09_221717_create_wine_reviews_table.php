@@ -17,7 +17,7 @@ class CreateWineReviewsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('wine_id');
-            $table->integer('rating')->default(0);
+            $table->double('rating', 2, 1)->default(0);
             $table->string('message');
             $table->timestamps();
         });

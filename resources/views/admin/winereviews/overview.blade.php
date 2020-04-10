@@ -42,7 +42,22 @@
                                 <td>{{ $wineReview->wine->name }}</td>
                                 <td>{{ $wineReview->user->username }}</td>
                                 <td>{{ $wineReview->message }}</td>
-                                <td>{{ $wineReview->rating }}</td>
+                                <td>
+                                    @foreach(range(1,5) as $i)
+                                        <span class="fa-stack" style="width:1em">
+                                            <i class="far fa-star fa-stack-1x"></i>
+
+                                            @if($wineReview->rating >0)
+                                                @if($wineReview->rating >0.5)
+                                                    <i class="fas fa-star fa-stack-1x"></i>
+                                                @else
+                                                    <i class="fas fa-star-half"></i>
+                                                @endif
+                                            @endif
+                                            @php $wineReview->rating--; @endphp
+                                        </span>
+                                    @endforeach
+                                </td>
                                 <td style="width:15%;">
                                     <form action="{{ route('admin.winereviews.destroy', $wineReview->id) }}" method="POST">
                                         @csrf

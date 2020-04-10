@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wine;
+use App\Models\WineReview;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WineController extends Controller
 {

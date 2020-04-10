@@ -18,6 +18,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}?v={{ rand(1,9999) }}" rel="stylesheet">

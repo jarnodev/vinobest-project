@@ -7,6 +7,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/appointments', 'AppointmentController@index')->name('appointments');
     Route::post('/appointments', 'AppointmentController@join')->name('appointments.join');
     Route::delete('/appointments/{id}', 'AppointmentController@destroy')->name('appointments.destroy');
+    Route::post('/wines/{id}', 'WineReviewController@postReview')->name('wine.postReview');
+    Route::delete('/wines/{id}', 'WineReviewController@deleteReview')->name('wine.deleteReview');
 });
 
 Route::namespace('Admin')->name('admin.')->group(function () {
