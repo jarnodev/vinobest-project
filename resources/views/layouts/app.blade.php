@@ -42,7 +42,7 @@
                         </li>
 
                         <li class="nav-item @yield('appointments')">
-                            <a class="nav-link" href="{{ route('appointments') }}"><i class="fas fa-book"></i> {{ __('Inschrijven') }}</a>
+                            <a class="nav-link" href="{{ route('appointments') }}"><i class="fas fa-book"></i> {{ __('Inschrijven proeverij') }}</a>
                         </li>
 
                         <li class="nav-item @yield('about-us')">

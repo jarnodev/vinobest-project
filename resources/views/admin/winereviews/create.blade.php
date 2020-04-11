@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="inputRating">{{ __('Aantal sterren') }}</label>
                             <select name="rating" class="form-control @error('rating') is-invalid @enderror" id="inputRating">
-                                @for ($i = 0; $i <= 5; $i++)
+                                @for ($i = 0; $i <= 5; $i += 0.5)
                                     <option value="{{ $i }}" @if ($i == old('rating')) selected @endif>{{ $i }}</option>
                                 @endfor
                             </select>
